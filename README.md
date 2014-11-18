@@ -7,6 +7,7 @@ This module allows the creation of log files that indent according to
 the flow of control of the program. Here is a trivial example of what
 such a log file might look like:
 
+<pre>
 <code>
 16:19:20 DEBUG   [MainThread] sample.<module>()@81     : hi
 16:19:20 INFO    [MainThread] __main__.test_debug()@?  : ->test_debug(1)
@@ -38,6 +39,7 @@ such a log file might look like:
 16:19:22 DEBUG   [Thread-1  ] __main__.testThread()@?  : <-testThread()
 16:19:22 DEBUG   [MainThread] sample.<module>()@102    : done
 </code>
+</pre>
 
 The main differences are that the left hand side of the log output is
 fixed width, so that the indentation of the debug output line up
