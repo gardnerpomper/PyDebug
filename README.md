@@ -51,6 +51,7 @@ DebugFilter object with content of the module/function/line number,
 and then to add a <code lang="python">@debug(__name__)</code>
 decorator before each function that is to use the indenting. Example:
 
+<pre>
 <code lang="python">
 @debug(__name__)
 def test_debug(ii):
@@ -66,4 +67,4 @@ def test_debug(ii):
 f = DebugFilter('%(module)s.%(funcName)s()@%(lineno)s',maxlen=25)
 test(7)
 </code>
-
+</pre>
