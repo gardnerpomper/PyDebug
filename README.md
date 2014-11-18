@@ -64,6 +64,11 @@ def test_debug(ii):
         subtest(jj)
         logger.debug( 'p=%d (test_debug)'%jj )
 
+logging.basicConfig(filename='debug.log',
+                    filemode='w',
+					level=logging.DEBUG,
+                    format='%(asctime)s %(levelname)-7s [%(threadName)-10s] %(modfuncline)-25s: %(debug_message)s',
+                    datefmt='%H:%M:%S')
 f = DebugFilter('%(module)s.%(funcName)s()@%(lineno)s',maxlen=25)
 test(7)
 </code>
