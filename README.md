@@ -53,7 +53,8 @@ decorator before each function that is to use the indenting. Example:
 
 <pre>
 <code lang="python">
-\#!/usr/bin/env python
+#!/usr/bin/env python
+# file t.py
 import logging
 from Debug import debug, DebugFilter
 
