@@ -53,6 +53,15 @@ decorator before each function that is to use the indenting. Example:
 
 <pre>
 <code lang="python">
+\#!/usr/bin/env python
+import logging
+from Debug import debug, DebugFilter
+
+@debug(__name__)
+def subtest(jj):
+    logging.getLogger(__name__).info('hi!')
+    return
+
 @debug(__name__)
 def test_debug(ii):
     '''
@@ -64,12 +73,27 @@ def test_debug(ii):
         subtest(jj)
         logger.debug( 'p=%d (test_debug)'%jj )
 
-logging.basicConfig(filename='debug.log',
+logging.basicConfig(filename='test.log',
                     filemode='w',
 					level=logging.DEBUG,
                     format='%(asctime)s %(levelname)-7s [%(threadName)-10s] %(modfuncline)-25s: %(debug_message)s',
                     datefmt='%H:%M:%S')
 f = DebugFilter('%(module)s.%(funcName)s()@%(lineno)s',maxlen=25)
-test(7)
+test_debug(7)
 </code>
 </pre>
+produces a file, test.log, containing this:
+<pre>
+12:23:52 DEBUG   [MainThread] __main__.test_debug()@?  : -&gt;test_debug(7)
+12:23:52 DEBUG   [MainThread] t.test_debug()@16        :   ii=7 (test_debug)
+12:23:52 DEBUG   [MainThread] __main__.subtest()@?     :   -&gt;subtest(0)
+12:23:52 INFO    [MainThread] t.subtest()@7            :     hi!
+12:23:52 DEBUG   [MainThread] __main__.subtest()@?     :   &lt;-subtest()
+12:23:52 DEBUG   [MainThread] t.test_debug()@19        :   p=0 (test_debug)
+12:23:52 DEBUG   [MainThread] __main__.subtest()@?     :   -&gt;subtest(1)
+12:23:52 INFO    [MainThread] t.subtest()@7            :     hi!
+12:23:52 DEBUG   [MainThread] __main__.subtest()@?     :   &lt;-subtest()
+12:23:52 DEBUG   [MainThread] t.test_debug()@19        :   p=1 (test_debug)
+12:23:52 DEBUG   [MainThread] __main__.test_debug()@?  : &lt;-test_debug()
+</pre>
+
