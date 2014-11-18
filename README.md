@@ -10,12 +10,12 @@ and automatic indentation (and de-dent) of the debug output each time
 a new function is entered or exitted.
 
 The Debug.py module allows one to format the module name, function
-name and line number (for example) into a single fixed length field, and also
-indents the output of logging statements by 'n' spaces in each
-subroutine. All that needs to be done for this to work is to define a
-DebugFilter object with content of the module/function/line number,
-and then to add a <pre><code lang="python">@debug(__name__)</code></pre>
-decorator before each function that is to use the indenting. Example:
+name and line number (for example) into a single fixed length field,
+and also indents the output of logging statements by 'n' spaces in
+each subroutine. All that needs to be done for this to work is to
+define a DebugFilter object with content of the module/function/line
+number, and then to add the debug decorator before each function that
+is to use the indenting. Example:
 
 <pre>
 <code lang="python">
